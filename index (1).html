@@ -1,0 +1,1819 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Talha Khan - Video Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Fuzzy+Bubbles:wght@700&family=Poppins:wght@300;400;500;600;700&family=Reenie+Beanie&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bgDark: "#0D0816" /* Darker background from image */,
+              primary: "#6F2DBD",
+              secondary: "#A663CC",
+              textWhite: "#FBFBFB",
+              cardBg: "rgba(255, 255, 255, 0.02)",
+              pillBg: "rgba(255, 255, 255, 0.03)",
+            },
+            fontFamily: {
+              sans: ["Poppins", "sans-serif"],
+              display: ["Fredoka", "sans-serif"],
+              hand: ["Reenie Beanie", "cursive"],
+              fuzzy: ['"Fuzzy Bubbles"', "cursive"],
+            },
+            boxShadow: {
+              glow: "0 0 60px rgba(111, 45, 189, 0.4)",
+              card: "0 4px 6px -1px rgba(0, 0, 0, 0.3)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #0d0816;
+        overflow-x: hidden;
+      }
+
+      .font-display {
+        font-family: "Fredoka", cursive;
+      }
+
+      /* Arc Glow Effect */
+      .arc-glow {
+        position: absolute;
+        top: 62%;
+        left: 0;
+        width: 100%;
+        height: 180%;
+        border-radius: 50%;
+        pointer-events: none;
+
+        /* Purple gradient arc */
+        background: linear-gradient(
+          90deg,
+          rgba(111, 45, 189, 0) 0%,
+          rgba(111, 45, 189, 0.9) 15%,
+          #8b5cf6 50%,
+          rgba(111, 45, 189, 0.9) 85%,
+          rgba(111, 45, 189, 0) 100%
+        );
+
+        /* Create the ring shape */
+        -webkit-mask: radial-gradient(
+          farthest-side,
+          transparent calc(100% - 24px),
+          #fff calc(100% - 23px)
+        );
+        mask: radial-gradient(
+          farthest-side,
+          transparent calc(100% - 24px),
+          #fff calc(100% - 23px)
+        );
+
+        /* Outer glow effects */
+        box-shadow:
+                /* Inner purple glow */
+          0 0 30px rgba(255, 255, 255, 0.8),
+          /* Mid purple glow */ 0 0 60px rgba(255, 255, 255, 0.6),
+          /* Outer purple glow */ 20px 20px 100px rgba(255, 255, 255, 1),
+          /* Far outer glow */ 0 0 150px rgba(255, 255, 255, 1);
+
+        /* Enhanced visibility */
+        opacity: 1;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 2px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #0d0816;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #2d243a;
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #6f2dbd;
+      }
+
+      /* Carousel Transitions */
+      .carousel-item {
+        transition: all 0.5s ease-in-out;
+      }
+
+      /* --- Dynamic Background Animation --- */
+      .fixed-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -50;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.3;
+        animation: float 25s infinite ease-in-out alternate;
+      }
+
+      .blob-1 {
+        top: -10%;
+        left: -10%;
+        width: 600px;
+        height: 600px;
+        background: #4c1d95;
+        animation-delay: 0s;
+      }
+
+      .blob-2 {
+        bottom: -10%;
+        right: -10%;
+        width: 700px;
+        height: 700px;
+        background: #6f2dbd;
+        animation-delay: -5s;
+      }
+
+      .blob-3 {
+        top: 40%;
+        left: 40%;
+        width: 500px;
+        height: 500px;
+        background: #1e1b4b;
+        animation-delay: -10s;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translate(0, 0) scale(1);
+        }
+
+        50% {
+          transform: translate(30px, 50px) scale(1.1);
+        }
+
+        100% {
+          transform: translate(-20px, -30px) scale(0.95);
+        }
+      }
+
+      /* --- Scroll Reveal Animation --- */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* --- Hover Micro-Interactions --- */
+      .hover-lift {
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .hover-lift:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px -10px rgba(111, 45, 189, 0.3);
+      }
+
+      /* --- Hero Stagger Load --- */
+      .fade-in-stagger {
+        opacity: 0;
+        animation: fadeIn 1s ease-out forwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .delay-100 {
+        animation-delay: 0.1s;
+      }
+
+      .delay-200 {
+        animation-delay: 0.2s;
+      }
+
+      .delay-300 {
+        animation-delay: 0.3s;
+      }
+
+      /* Workflow Specifics */
+      .wf-node-shadow {
+        box-shadow:
+          0 0 20px rgba(111, 45, 189, 0.6),
+          inset 0 0 10px rgba(0, 0, 0, 0.8);
+      }
+
+      /* Carousel Perspective */
+      .perspective-1000 {
+        perspective: 1000px;
+      }
+
+      @media screen and (max-width: 768px) {
+        .arc-glow {
+          display: none;
+
+          /* Purple gradient arc */
+        }
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-bgDark text-textWhite overflow-x-hidden font-sans selection:bg-primary selection:text-white relative"
+  >
+    <!-- Dynamic Background -->
+    <div class="fixed-bg">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+
+    <!-- New Header / Navbar -->
+    <nav
+      class="fixed top-0 left-0 w-full z-50 bg-[#0D0816]/90 backdrop-blur-md border-b border-white/5 transition-all duration-300"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <!-- Brand / Name -->
+        <a
+          href="#"
+          class="text-xl font-bold font-display text-white tracking-wide"
+          >Talha Khan</a
+        >
+
+        <!-- Desktop Menu -->
+        <div
+          class="hidden md:flex gap-8 items-center text-sm font-medium text-gray-300"
+        >
+          <a href="#profile" class="hover:text-primary transition">Profile</a>
+          <a href="#toc" class="hover:text-primary transition"
+            >Table of Content</a
+          >
+          <a href="#workflow" class="hover:text-primary transition"
+            >Editing Workflow</a
+          >
+
+          <!-- Work Dropdown -->
+          <div class="relative group">
+            <button
+              class="flex items-center gap-2 hover:text-primary transition py-2"
+            >
+              Work <i class="fa-solid fa-chevron-down text-[10px]"></i>
+            </button>
+            <!-- Dropdown Content -->
+            <div
+              class="absolute top-full right-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0"
+            >
+              <div
+                class="w-56 bg-[#1A1525] border border-white/10 rounded-xl shadow-2xl overflow-hidden flex flex-col"
+              >
+                <a
+                  href="#ads-shorts-carousel"
+                  class="px-5 py-3 hover:bg-white/5 hover:text-primary text-gray-400 text-left transition border-b border-white/5"
+                  >Short Ads Videos</a
+                >
+                <a
+                  href="#ads-long-carousel"
+                  class="px-5 py-3 hover:bg-white/5 hover:text-primary text-gray-400 text-left transition border-b border-white/5"
+                  >Long Ads Videos</a
+                >
+                <a
+                  href="#shorts-carousel"
+                  class="px-5 py-3 hover:bg-white/5 hover:text-primary text-gray-400 text-left transition border-b border-white/5"
+                  >Short Video</a
+                >
+                <a
+                  href="#longform-carousel"
+                  class="px-5 py-3 hover:bg-white/5 hover:text-primary text-gray-400 text-left transition border-b border-white/5"
+                  >Long Form</a
+                >
+                <a
+                  href="#saas-carousel"
+                  class="px-5 py-3 hover:bg-white/5 hover:text-primary text-gray-400 text-left transition"
+                  >SaaS Explainer</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Toggle (Simple) -->
+        <button
+          class="md:hidden text-white text-xl p-2"
+          onclick="
+            document.getElementById('mobile-menu').classList.toggle('hidden')
+          "
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <!-- Simple Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-[#1A1525] border-t border-white/10 p-4 absolute w-full left-0 top-full shadow-2xl"
+      >
+        <div class="flex flex-col gap-4 text-sm font-medium text-gray-300">
+          <a href="#profile" class="hover:text-primary transition">Profile</a>
+          <a href="#toc" class="hover:text-primary transition"
+            >Table of Content</a
+          >
+          <a href="#workflow" class="hover:text-primary transition"
+            >Editing Workflow</a
+          >
+          <div class="border-t border-white/10 pt-2 mt-2">
+            <span class="text-xs uppercase text-gray-500 mb-2 block">Work</span>
+            <div class="flex flex-col gap-3 pl-2">
+              <a href="#ads-shorts-carousel" class="hover:text-primary"
+                >Short Ads Videos</a
+              >
+              <a href="#ads-long-carousel" class="hover:text-primary"
+                >Long Ads Videos</a
+              >
+              <a href="#shorts-carousel" class="hover:text-primary"
+                >Short Video</a
+              >
+              <a href="#longform-carousel" class="hover:text-primary"
+                >Long Form</a
+              >
+              <a href="#saas-carousel" class="hover:text-primary"
+                >SaaS Explainer</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section (New) -->
+    <section
+      id="hero"
+      class="relative pt-40 pb-20 lg:pt-52 lg:pb-32 overflow-hidden flex flex-col items-center justify-center text-center min-h-[90vh]"
+    >
+      <!-- Spotlight Effect (Purple) -->
+      <div
+        class="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-[#6F2DBD]/20 rounded-full blur-[120px] pointer-events-none mix-blend-screen"
+      ></div>
+      <div
+        class="absolute top-[10%] left-[-10%] w-[600px] h-[600px] bg-[#3234BD]/10 rounded-full blur-[100px] pointer-events-none mix-blend-screen"
+      ></div>
+
+      <!-- Dynamic Galaxy Stars Canvas -->
+      <canvas
+        id="galaxy-canvas"
+        class="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-70"
+      ></canvas>
+
+      <!-- Curved Arc Line -->
+      <div
+        class="absolute inset-0 flex items-center justify-center pointer-events-none z-5"
+      >
+        <div class="relative w-[700px] h-[700px] md:w-[900px] md:h-[500px]">
+          <div class="arc-glow"></div>
+        </div>
+      </div>
+
+      <div class="relative z-10 px-6 max-w-5xl mx-auto w-full">
+        <!-- Top Tagline -->
+        <h3
+          class="text-secondary text-xl md:text-2xl font-medium mb-6 tracking-wide fade-in-stagger delay-100 text-center md:text-start md:ps-24"
+        >
+          Motion Graphics & VSL Editor
+        </h3>
+
+        <!-- Main Title -->
+        <h1
+          class="text-5xl md:text-[140px] font-fuzzy font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50 leading-[0.9] md:mb-8 drop-shadow-2xl fade-in-stagger delay-200 md:pb-[7rem] text-center"
+        >
+          PORTFOLIO
+        </h1>
+
+        <!-- Upper Right "Talha Khan" -->
+        <div
+          class="hidden md:block absolute top-28 md:top-[11rem] right-1/2 translate-x-1/2 md:top-[11rem] md:right-[9rem] md:translate-x-0"
+        >
+          <p
+            class="text-lg md:text-2xl text-secondary font-medium fade-in-stagger delay-300"
+          >
+            Talha Khan
+          </p>
+        </div>
+        <div class="block md:hidden px-10 justify-center flex py-5">
+          <!-- Placeholder image used -->
+          <img
+            src="pic2.png"
+            alt="Talha Khan"
+            class="w-[180px] h-[180px] object-cover transform transition duration-700 group-hover:scale-105 filter contrast-110 rounded-lg"
+          />
+        </div>
+        <!-- Bottom Center "Talha Khan" (inside arc) -->
+        <div class="md:pt-[4rem] mb-8">
+          <p
+            class="text-3xl md:text-5xl text-secondary font-bold fade-in-stagger delay-400"
+          >
+            Talha Khan
+          </p>
+        </div>
+
+        <!-- Buttons -->
+        <div
+          class="flex flex-col md:flex-row gap-6 justify-center fade-in-stagger delay-300"
+        >
+          <a
+            href="#ads-shorts-carousel"
+            class="px-10 py-4 rounded-full bg-primary hover:bg-[#5b24a0] text-white font-bold text-lg transition-all hover:scale-105 shadow-[0_0_30px_rgba(111,45,189,0.4)]"
+          >
+            View Work
+          </a>
+          <a
+            href="#profile"
+            class="px-10 py-4 rounded-full border border-white/20 hover:bg-white/5 text-white font-bold text-lg transition-all hover:scale-105 backdrop-blur-sm"
+          >
+            Contact Me
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Profile & Skills & Experience Grid -->
+    <!-- Removed extra top padding since Hero is now above -->
+    <section id="profile" class="max-w-7xl mx-auto px-6 pb-0 reveal py-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        <!-- LEFT COLUMN: Profile Image (25% Width) -->
+        <div class="lg:col-span-3 flex flex-col h-full">
+          <!-- Reduced min-h from 500px to 350px (30% reduction) -->
+          <div
+            class="rounded-[2.5rem] overflow-hidden border-2 border-primary/40 shadow-glow relative group h-full min-h-[350px] lg:min-h-0 hover-lift md:block hidden"
+          >
+            <!-- Placeholder image used -->
+            <img
+              src="pic2.png"
+              alt="Talha Khan"
+              class="w-full h-full object-cover transform transition duration-700 group-hover:scale-105 filter contrast-110"
+            />
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Bio + Skills (75% Width) -->
+        <div class="lg:col-span-9 flex flex-col gap-4 h-full">
+          <!-- Introduction Box -->
+          <div
+            class="border border-white/80 rounded-[3rem] p-8 bg-cardBg backdrop-blur-sm flex flex-col justify-center hover-lift h-full"
+          >
+            <p
+              class="text-gray-300 leading-relaxed text-lg md:text-2xl font-light"
+            >
+              I'm <span class="text-white font-medium">Talha Khan</span> from Pakistan — a Motion Graphics &amp; Video Editor with <span class="text-white font-medium">4 years of experience</span>. I specialize in VSLs, YouTube videos, storytelling, and business content that hooks viewers, builds trust, and converts them into clients. Every project is crafted with purpose, pacing, and long-term post-production value.
+            </p>
+          </div>
+
+          <!-- Skills Pill (Updated to 20% / 5% / 75% Layout) -->
+          <div
+            class="border border-white/80 rounded-[2rem] px-4 md:px-8 py-5 flex flex-col md:flex-row items-start md:items-center w-full bg-transparent hover:border-[#6F2DBD] transition-all duration-300 hover-lift md:min-h-[90px] shadow-card gap-4 md:gap-0"
+          >
+            <!-- Label Area -->
+            <div
+              class="w-full md:w-[15%] flex items-center justify-start md:justify-start"
+            >
+              <span
+                class="text-2xl md:text-3xl font-display font-medium text-white px-2"
+                >Skills</span
+              >
+            </div>
+            <!-- Divider -->
+            <div class="hidden md:flex w-[5%] justify-center items-center">
+              <div class="h-8 w-[1px] bg-white/20"></div>
+            </div>
+            <!-- Items Area -->
+            <div
+              class="w-full md:w-[80%] flex flex-col md:flex-row items-stretch md:items-center gap-3 md:gap-0 md:justify-between"
+            >
+              <!-- Item 1 -->
+              <div
+                class="bg-[#2D2D2D] px-5 py-3 rounded-full flex items-center gap-3 text-gray-300 hover:bg-[#3D3D3D] transition cursor-default border border-white/5 flex-1 justify-center whitespace-nowrap md:mx-1"
+              >
+                <i class="fa-solid fa-wand-magic-sparkles text-gray-400"></i>
+                <span class="text-sm font-medium">Motion Graphics</span>
+              </div>
+              <!-- Item 2 -->
+              <div
+                class="bg-[#2D2D2D] px-5 py-3 rounded-full flex items-center gap-3 text-gray-300 hover:bg-[#3D3D3D] transition cursor-default border border-white/5 flex-1 justify-center whitespace-nowrap md:mx-1"
+              >
+                <i class="fa-solid fa-video text-gray-400"></i>
+                <span class="text-sm font-medium">VSLs</span>
+              </div>
+              <!-- Item 3 -->
+              <div
+                class="bg-[#2D2D2D] px-5 py-3 rounded-full flex items-center gap-3 text-gray-300 hover:bg-[#3D3D3D] transition cursor-default border border-white/5 flex-1 justify-center whitespace-nowrap md:mx-1"
+              >
+                <i class="fa-solid fa-clapperboard text-gray-400"></i>
+                <span class="text-sm font-medium">Storytelling</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Experience Cards Row -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 md:block hidden">
+        <!-- Freelancer Card -->
+        <div
+          class="border border-white/80 rounded-[3rem] p-10 bg-cardBg hover:border-primary/50 transition duration-300 flex flex-col justify-between h-full hover-lift"
+        >
+          <div>
+            <div class="flex justify-between items-start mb-1">
+              <h3 class="text-3xl font-bold text-white">Freelancer</h3>
+              <span
+                class="bg-[#2D2D2D] px-4 py-1.5 rounded-lg text-xs font-bold text-gray-400 border border-white/5"
+                >2021-Now</span
+              >
+            </div>
+            <p class="text-white font-medium text-sm mb-6">
+              Motion Graphics & Video Editor / VSL Specialist
+            </p>
+            <ul
+              class="space-y-4 text-gray-400 text-sm leading-relaxed list-disc pl-4 marker:text-gray-500"
+            >
+              <li>
+                Produced VSLs, YouTube talking-head videos, storytelling &amp; business videos for agencies and clients
+              </li>
+              <li>
+                Worked with multiple agencies across different video styles and industries
+              </li>
+              <li>
+                Built industry-level editing rules to hook viewers, maintain engagement, and drive conversions
+              </li>
+              <li>
+                Delivered post-production project files built for long-term reuse — no need to repay editors for updates
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Results Card -->
+        <div
+          class="border border-white/80 rounded-[3rem] p-10 bg-cardBg hover:border-primary/50 transition duration-300 flex flex-col justify-between h-full hover-lift"
+        >
+          <div>
+            <div class="flex justify-between items-start mb-1">
+              <h3 class="text-3xl font-bold text-white">Expertise & Focus</h3>
+              <span
+                class="bg-[#2D2D2D] px-4 py-1.5 rounded-lg text-xs font-bold text-gray-400 border border-white/5"
+                >4 Years</span
+              >
+            </div>
+            <p class="text-white font-medium text-sm mb-6">
+              VSLs / YouTube / Storytelling / Business Videos
+            </p>
+            <ul
+              class="space-y-4 text-gray-400 text-sm leading-relaxed list-disc pl-4 marker:text-gray-500"
+            >
+              <li>
+                Specialized in <span class="text-white font-bold">VSLs</span> — crafting video sales letters that convert viewers into paying clients
+              </li>
+              <li>
+                Deep expertise in explainer videos, YouTube talking-head content, and business storytelling
+              </li>
+              <li>
+                Every video is built with clear pacing, structure, and viewer retention from start to finish
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tools & Details Section -->
+    <section
+      class="max-w-7xl mx-auto px-6 pt-6 pb-4 flex flex-col gap-6 reveal"
+    >
+      <!-- Top Row: Tools & What I Do -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <!-- Left Column: Stacked Pills -->
+        <div
+          class="lg:col-span-6 flex flex-col justify-between h-full space-y-3"
+        >
+          <!-- Editing Tools Pill -->
+          <div
+            class="border border-white/80 rounded-[2rem] px-4 md:px-8 py-5 flex items-center w-full bg-transparent hover:border-[#6F2DBD] transition-all duration-300 hover-lift min-h-[90px]"
+          >
+            <!-- Text Area (35%) -->
+            <div class="w-[35%] flex items-center justify-start">
+              <span class="text-lg md:text-xl font-bold text-white"
+                >Editing Tools</span
+              >
+            </div>
+            <!-- Divider (5%) -->
+            <div class="w-[5%] flex justify-center items-center">
+              <div class="h-8 w-[1px] bg-white/20"></div>
+            </div>
+            <!-- Images Area (60%) - Justified alignment -->
+            <div class="w-[60%] flex items-center justify-between md:px-6 px-1">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg"
+                alt="Premiere Pro"
+                class="w-7 h-7 md:w-10 md:h-10 rounded-lg object-contain hover:scale-110 transition-transform"
+              />
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Adobe_After_Effects_CC_icon.svg"
+                alt="After Effects"
+                class="w-8 h-8 md:w-10 md:h-10 rounded-lg object-contain hover:scale-110 transition-transform"
+              />
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/4/4d/DaVinci_Resolve_Studio.png"
+                alt="DaVinci Resolve"
+                class="w-8 h-8 md:w-10 md:h-10 object-contain hover:scale-110 transition-transform"
+              />
+            </div>
+          </div>
+
+          <!-- GFX Tools Pill -->
+          <div
+            class="border border-white/80 rounded-[2rem] px-4 md:px-8 py-5 flex items-center w-full bg-transparent hover:border-[#6F2DBD] transition-all duration-300 hover-lift min-h-[90px]"
+          >
+            <!-- Text Area (35%) -->
+            <div class="w-[35%] flex items-center justify-start">
+              <span class="text-lg md:text-xl font-bold text-white"
+                >GFX Tools</span
+              >
+            </div>
+            <!-- Divider (5%) -->
+            <div class="w-[5%] flex justify-center items-center">
+              <div class="h-8 w-[1px] bg-white/20"></div>
+            </div>
+            <!-- Images Area (60%) - Justified alignment -->
+            <div class="w-[60%] flex items-center justify-between md:px-6 px-1">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg"
+                alt="Figma"
+                class="w-8 h-8 md:w-10 md:h-10 object-contain hover:scale-110 transition-transform"
+              />
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg"
+                alt="Illustrator"
+                class="w-8 h-8 md:w-10 md:h-10 rounded-lg object-contain hover:scale-110 transition-transform"
+              />
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg"
+                alt="Photoshop"
+                class="w-8 h-8 md:w-10 md:h-10 rounded-lg object-contain hover:scale-110 transition-transform"
+              />
+            </div>
+          </div>
+
+          <!-- Languages Pill -->
+          <div
+            class="border border-white/80 rounded-[2rem] px-4 md:px-8 py-5 flex items-center w-full bg-transparent hover:border-[#6F2DBD] transition-all duration-300 hover-lift min-h-[90px]"
+          >
+            <!-- Text Area (35%) -->
+            <div class="w-[35%] flex items-center justify-start">
+              <span class="text-lg md:text-xl font-bold text-white"
+                >Languages</span
+              >
+            </div>
+            <!-- Divider (5%) -->
+            <div class="w-[5%] flex justify-center items-center">
+              <div class="h-8 w-[1px] bg-white/20"></div>
+            </div>
+            <!-- Images Area (60%) - Justified alignment -->
+            <div class="w-[60%] flex items-center justify-between md:px-6 px-1">
+              <img
+                src="https://flagcdn.com/w80/pk.png"
+                alt="Pakistan"
+                class="w-8 w-8 md:w-10 object-cover rounded md:rounded-md shadow-sm hover:scale-110 transition-transform"
+              />
+              <img
+                src="https://flagcdn.com/w80/us.png"
+                alt="USA"
+                class="w-8 w-8 md:w-10 object-cover rounded md:rounded-md shadow-sm hover:scale-110 transition-transform"
+              />
+              <img
+                src="https://flagcdn.com/w80/de.png"
+                alt="Germany"
+                class="w-8 w-8 md:w-10 object-cover rounded md:rounded-md shadow-sm hover:scale-110 transition-transform"
+              />
+              <img
+                src="https://flagcdn.com/w80/th.png"
+                alt="Thailand"
+                class="w-8 w-8 md:w-10 object-cover rounded md:rounded-md shadow-sm hover:scale-110 transition-transform"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: What I Do -->
+        <div
+          class="lg:col-span-6 border border-white/80 rounded-[3rem] px-8 py-6 h-full bg-cardBg flex flex-col hover-lift md:block hidden"
+        >
+          <h3 class="text-3xl font-bold mb-2 text-white">What I Do</h3>
+          <p class="text-gray-400 text-sm mb-4 pb-3 border-b border-white/10">
+            Motion graphics & video editing with a focus on VSLs and business content
+          </p>
+          <ul class="space-y-2 text-gray-300 text-sm list-none">
+            <li class="flex gap-3 items-start">
+              <span class="text-gray-500 text-xs mt-1">•</span>
+              <span>Produce high-converting <strong class="text-white">VSLs</strong> (Video Sales Letters) for businesses and agencies.</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="text-gray-500 text-xs mt-1">•</span>
+              <span>Edit YouTube talking-head videos with professional pacing and viewer retention.</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="text-gray-500 text-xs mt-1">•</span>
+              <span>Create storytelling, explainer, and business videos that serve a clear purpose.</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="text-gray-500 text-xs mt-1">•</span>
+              <span>Deliver post-production files you can reuse and update years down the line.</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="text-gray-500 text-xs mt-1">•</span>
+              <span>Apply industry-level motion graphics techniques to make every video look professional.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Row: Profiles & Details -->
+      <div class="flex flex-col gap-6">
+        <!-- Profiles Pill -->
+        <div
+          class="border border-white/80 rounded-[2rem] px-8 py-5 flex flex-col md:flex-row items-center bg-transparent min-h-[90px] h-auto w-full hover-lift"
+        >
+          <span
+            class="text-xl font-bold text-white min-w-[140px] text-center md:text-left mb-4 md:mb-0"
+            >Profiles</span
+          >
+          <div class="hidden md:block h-8 w-[1px] bg-white/20 mx-6"></div>
+          <div class="flex gap-4 items-center flex-wrap justify-between w-full">
+            <a
+              href="https://www.facebook.com/saimkhan_16/"
+              class="bg-[#1877F2] px-3 py-3 rounded-xl flex items-center justify-center gap-2 text-sm text-white hover:opacity-90 transition whitespace-nowrap flex-1 hover:scale-105"
+              ><i class="fa-brands fa-facebook text-xl"></i> Facebook</a
+            >
+            <a
+              href="https://www.instagram.com/saimkhan_16/"
+              class="bg-gradient-to-r from-purple-600 to-pink-600 px-3 py-3 rounded-xl flex items-center justify-center gap-2 text-sm text-white hover:opacity-90 transition whitespace-nowrap flex-1 hover:scale-105"
+              ><i class="fa-brands fa-instagram text-xl"></i> Instagram</a
+            >
+            <a
+              href=" https://www.linkedin.com/in/muhammad-saim-"
+              class="bg-[#0077b5] px-3 py-3 rounded-xl flex items-center justify-center gap-2 text-sm text-white hover:opacity-90 transition whitespace-nowrap flex-1 hover:scale-105"
+              ><i class="fa-brands fa-linkedin text-xl"></i> LinkedIn</a
+            >
+            <a
+              href="https://www.youtube.com/@SaimKhan-pn9nd"
+              class="bg-[#444] px-3 py-3 rounded-xl flex items-center justify-center gap-2 text-sm text-white hover:opacity-90 transition whitespace-nowrap flex-1 hover:scale-105"
+              ><i class="fa-brands fa-youtube text-red-600 text-xl"></i>
+              Youtube</a
+            >
+          </div>
+        </div>
+
+        <!-- Details Pill -->
+        <div
+          class="border border-white/80 rounded-[2rem] px-8 py-5 flex flex-col md:flex-row items-center bg-transparent min-h-[90px] h-auto w-full hover-lift"
+        >
+          <span
+            class="text-xl font-bold text-white min-w-[140px] text-center md:text-left mb-4 md:mb-0"
+            >Details</span
+          >
+          <div class="hidden md:block h-8 w-[1px] bg-white/20 mx-6"></div>
+          <div class="flex gap-4 items-center flex-wrap justify-between w-full">
+            <div
+              class="bg-[#333] px-3 py-3 rounded-xl flex items-center justify-center gap-2 text-xs md:text-sm text-gray-300 whitespace-nowrap flex-1"
+            >
+              <i class="fa-regular fa-user"></i> Age 25
+            </div>
+            <div
+              class="bg-[#333] px-3 py-3 rounded-xl flex items-center justify-center gap-2 text-xs md:text-sm text-gray-300 whitespace-nowrap flex-1"
+            >
+              <i class="fa-solid fa-envelope text-red-500"></i>
+              Saimkhan00n@gmail.com
+            </div>
+            <div
+              class="bg-[#333] px-3 py-3 rounded-xl flex items-center justify-center gap-2 text-xs md:text-sm text-gray-300 whitespace-nowrap flex-1"
+            >
+              <i class="fa-brands fa-whatsapp text-green-500 text-lg"></i> +66
+              616850347
+            </div>
+            <div
+              class="bg-[#333] px-3 py-3 rounded-xl flex items-center justify-center gap-2 text-xs md:text-sm text-gray-300 whitespace-nowrap flex-1"
+            >
+              <i class="fa-solid fa-location-dot text-red-500"></i> Thailand
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="max-w-4xl mx-auto px-6 py-20 text-center reveal">
+      <h2
+        class="text-4xl md:text-[131px] font-fuzzy font-bold text-white mb-2 leading-none tracking-normal"
+      >
+        Introduction
+      </h2>
+      <h3 class="text-secondary text-lg md:text-xl font-bold mb-2">
+        Meet the motion graphics editor behind VSLs that convert
+      </h3>
+      <p class="text-gray-400 text-sm mb-12 font-light">
+        4 years of crafting videos that hook viewers, build trust, and turn audiences into clients
+      </p>
+
+      <div
+        class="relative border border-white/20 rounded-[2rem] p-2 bg-[#1A1525] shadow-glow mx-auto max-w-3xl hover-lift"
+      >
+        <!-- Main Introduction Video -->
+        <div
+          class="aspect-video bg-[#2A1E3E] rounded-[1.5rem] overflow-hidden relative shadow-2xl"
+        >
+          <iframe
+            width="100%"
+            height="100%"
+            src=""
+            title="Introduction Video"
+            frameborder="0"
+            allow="
+              accelerometer;
+              autoplay;
+              clipboard-write;
+              encrypted-media;
+              gyroscope;
+              picture-in-picture;
+              web-share;
+            "
+            allowfullscreen
+            class="w-full h-full object-cover"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Table of Content -->
+    <!-- Added id="toc" -->
+    <section id="toc" class="max-w-4xl mx-auto px-6 py-12 reveal">
+      <h2
+        class="text-4xl md:text-[90px] font-display font-medium text-center mb-16 text-white"
+      >
+        Table of Content
+      </h2>
+
+      <div class="grid grid-cols-3 md:grid-cols-3 gap-3 md:gap-6 px-4">
+        <a
+          href="#"
+          class="border border-white/20 py-3 md:py-4 px-2 md:px-6 rounded-2xl flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 bg-[#0D0816] hover:bg-white/5 transition group hover-lift"
+        >
+          <i class="fa-solid fa-chalkboard-user text-teal-400 text-base md:text-lg"></i>
+          <span class="font-bold text-xs md:text-sm text-white text-center">Introduction</span>
+        </a>
+        <a
+          href="#"
+          class="border border-white/20 py-3 md:py-4 px-2 md:px-6 rounded-2xl flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 bg-[#0D0816] hover:bg-white/5 transition hover-lift"
+        >
+          <div
+            class="w-5 h-4 bg-red-500 rounded-sm flex items-center justify-center flex-shrink-0"
+          >
+            <div
+              class="w-0 h-0 border-t-[3px] border-t-transparent border-l-[5px] border-l-white border-b-[3px] border-b-transparent"
+            ></div>
+          </div>
+          <span class="font-bold text-xs md:text-sm text-white text-center">VSLs</span>
+        </a>
+        <a
+          href="#"
+          class="border border-white/20 py-3 md:py-4 px-2 md:px-6 rounded-2xl flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 bg-[#0D0816] hover:bg-white/5 transition group hover-lift"
+        >
+          <i class="fa-brands fa-youtube text-red-500 text-base md:text-lg"></i>
+          <span class="font-bold text-xs md:text-sm text-white text-center">YouTube Videos</span>
+        </a>
+        <a
+          href="#"
+          class="border border-white/20 py-3 md:py-4 px-2 md:px-6 rounded-2xl flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 bg-[#0D0816] hover:bg-white/5 transition group hover-lift"
+        >
+          <i class="fa-solid fa-film text-purple-400 text-base md:text-lg"></i>
+          <span class="font-bold text-xs md:text-sm text-white text-center">Storytelling</span>
+        </a>
+        <a
+          href="#"
+          class="border border-white/20 py-3 md:py-4 px-2 md:px-6 rounded-2xl flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 bg-[#0D0816] hover:bg-white/5 transition group hover-lift"
+        >
+          <i class="fa-solid fa-briefcase text-blue-400 text-base md:text-lg"></i>
+          <span class="font-bold text-xs md:text-sm text-white text-center">Business Videos</span>
+        </a>
+        <a
+          href="#"
+          class="border border-white/20 py-3 md:py-4 px-2 md:px-6 rounded-2xl flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 bg-[#0D0816] hover:bg-white/5 transition hover-lift"
+        >
+          <i class="fa-solid fa-desktop text-blue-300 text-base md:text-lg"></i>
+          <span class="font-bold text-xs md:text-sm text-white text-center">Explainer Videos</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Editing Workflow -->
+    <!-- Added id="workflow" -->
+    <section id="workflow" class="max-w-5xl mx-auto px-6 py-20 relative reveal md:block hidden">
+      <h2
+        class="text-4xl md:text-[90px] font-display font-medium text-center mb-24 text-white drop-shadow-lg"
+      >
+        Editing Workflow
+      </h2>
+
+      <div class="relative w-full min-h-[900px] lg:h-[950px]">
+        <!-- Structured SVG Path -->
+        <svg
+          class="hidden lg:block absolute top-0 left-0 w-full h-full pointer-events-none z-0 overflow-visible"
+          viewBox="0 0 800 1000"
+          preserveAspectRatio="none"
+        >
+          <!-- Actual Drawn Path -->
+          <path
+            d="M 120 50 
+                          L 120 125 a 10 10 0 0 0 10 10
+                          L 270 135 a 10 10 0 0 1 10 10
+                          L 280 260 
+                          L 400 260
+                          L 400 325 a 10 10 0 0 0 10 10
+                          L 670 335 a 10 10 0 0 1 10 10
+                          L 680 380
+                          L 680 450
+                          L 680 515 a 10 10 0 0 1 -10 10
+                          L 410 525 a 10 10 0 0 0 -10 10
+                          L 400 570
+                          L 400 640
+                          L 400 705 a 10 10 0 0 1 -10 10
+                          L 130 715 a 10 10 0 0 0 -10 10
+                          L 120 760
+                          L 120 830
+                          L 120 895 a 10 10 0 0 0 10 10
+                          L 390 905 a 10 10 0 0 1 10 10
+                          L 400 960"
+            fill="none"
+            stroke="#A663CC"
+            stroke-width="2"
+            stroke-opacity="0.6"
+          />
+        </svg>
+
+        <!-- Mobile Line -->
+        <div
+          class="block lg:hidden absolute top-0 left-6 w-0.5 h-full bg-white/20 z-0"
+        ></div>
+
+        <!-- Workflow Items -->
+
+        <!-- STEP 1: Top Left -->
+        <div
+          class="absolute top-[5%] left-0 lg:left-[15%] w-full lg:w-auto flex lg:block items-start gap-4 transform lg:-translate-x-1/2"
+        >
+          <div
+            class="relative z-10 w-12 h-12 rounded-full bg-black border-4 border-[#6F2DBD] flex items-center justify-center text-white font-bold text-xl wf-node-shadow flex-shrink-0"
+          >
+            1
+            <div
+              class="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-[#6F2DBD] border-b-[6px] border-b-transparent"
+            ></div>
+          </div>
+          <!-- Text Right -->
+          <div class="lg:absolute lg:top-0 lg:left-16 lg:w-64 pt-1 lg:pt-0">
+            <h3 class="text-xl font-bold text-[#D8A5FF] drop-shadow-md">
+              Crafting the Foundation
+            </h3>
+            <p class="text-sm text-gray-400 mt-1">
+              Footage Trimming in Premiere Pro or DaVinci Resolve
+            </p>
+          </div>
+        </div>
+
+        <!-- STEP 2: Center -->
+        <div
+          class="absolute top-[18%] left-0 lg:left-1/2 lg:-translate-x-1/2 w-full lg:w-auto flex lg:flex-col items-center gap-4 lg:gap-2"
+        >
+          <!-- Text Top (for Desktop) -->
+          <div
+            class="lg:w-72 lg:text-center order-2 lg:order-1 md:pt-20 lg:pt-0 pl-4 lg:pl-0 text-left lg:mb-4"
+          >
+            <h3 class="text-xl font-bold text-[#D8A5FF] drop-shadow-md">
+              Rhythm in the Cut
+            </h3>
+            <p class="text-sm text-gray-400 mt-1">
+              Applying J-cuts and L-cuts for Pacing
+            </p>
+          </div>
+
+          <div
+            class="relative z-10 w-12 h-12 rounded-full bg-black border-4 border-[#6F2DBD] flex items-center justify-center text-white font-bold text-xl wf-node-shadow flex-shrink-0 order-1 lg:order-2"
+          >
+            2
+            <div
+              class="hidden lg:block absolute -top-3 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-b-[10px] border-b-[#6F2DBD] border-r-[6px] border-r-transparent"
+            ></div>
+          </div>
+        </div>
+
+        <!-- STEP 3: Right -->
+        <div
+          class="absolute top-[38%] left-0 lg:left-[85%] lg:-translate-x-1/2 w-full lg:w-auto flex lg:block items-start gap-4 lg:text-right"
+        >
+          <div
+            class="relative z-10 w-12 h-12 rounded-full bg-black border-4 border-[#6F2DBD] flex items-center justify-center text-white font-bold text-xl wf-node-shadow flex-shrink-0 lg:absolute lg:top-0 lg:left-0 lg:-translate-x-1/2"
+          >
+            3
+            <div
+              class="hidden lg:block absolute -left-3 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-r-[10px] border-r-[#6F2DBD] border-b-[6px] border-b-transparent"
+            ></div>
+          </div>
+          <!-- Text Left -->
+          <div
+            class="lg:absolute lg:top-0 lg:right-16 lg:w-64 pt-1 lg:pt-0 pl-4 lg:pl-0"
+          >
+            <h3 class="text-xl font-bold text-[#D8A5FF] drop-shadow-md">
+              Sound Design Prep
+            </h3>
+            <p class="text-sm text-gray-400 mt-1">
+              Selecting Background Music for Tone
+            </p>
+          </div>
+        </div>
+
+        <!-- STEP 4: Center -->
+        <div
+          class="absolute top-[58%] left-0 lg:left-1/3 lg:-translate-x-1/2 w-full lg:w-auto flex lg:flex-row items-center gap-4"
+        >
+          <!-- Text Left (Desktop) -->
+          <div class="hidden lg:block w-72 text-right pr-6">
+            <h3 class="text-xl font-bold text-[#D8A5FF] drop-shadow-md">
+              Motion Graphics Integration
+            </h3>
+            <p class="text-sm text-gray-400 mt-1">
+              Dynamic Animation in After Effects
+            </p>
+          </div>
+
+          <div
+            class="relative z-10 w-12 h-12 rounded-full bg-black border-4 border-[#6F2DBD] flex items-center justify-center text-white font-bold text-xl wf-node-shadow flex-shrink-0"
+          >
+            4
+            <div
+              class="hidden lg:block absolute -left-3 top-1/2 rotate-180 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-[#6F2DBD] border-b-[6px] border-b-transparent"
+            ></div>
+          </div>
+
+          <!-- Text Right (Mobile) -->
+          <div class="block lg:hidden pl-4 pt-1">
+            <h3 class="text-xl font-bold text-[#D8A5FF] drop-shadow-md">
+              Motion Graphics Integration
+            </h3>
+            <p class="text-sm text-gray-400 mt-1">
+              Dynamic Animation in After Effects
+            </p>
+          </div>
+        </div>
+
+        <!-- STEP 5: Left -->
+        <div
+          class="absolute top-[78%] left-0 lg:left-[15%] lg:-translate-x-1/2 w-full lg:w-auto flex lg:block items-start gap-4"
+        >
+          <div
+            class="relative z-10 w-12 h-12 rounded-full bg-black border-4 border-[#6F2DBD] flex items-center justify-center text-white font-bold text-xl wf-node-shadow flex-shrink-0"
+          >
+            5
+            <div
+              class="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-[#6F2DBD] border-b-[6px] border-b-transparent"
+            ></div>
+          </div>
+          <!-- Text Right -->
+          <div
+            class="lg:absolute lg:top-0 lg:left-16 lg:w-64 pt-1 lg:pt-0 pl-4 lg:pl-0"
+          >
+            <h3 class="text-xl font-bold text-[#D8A5FF] drop-shadow-md">
+              Final Assembly & Audio Mix
+            </h3>
+            <p class="text-sm text-gray-400 mt-1">
+              Sound Effects and Final Assembly in Premiere Pro
+            </p>
+          </div>
+        </div>
+
+        <!-- STEP 6: Center -->
+        <div
+          class="absolute top-[96%] left-0 lg:left-1/2 lg:-translate-x-1/2 w-full lg:w-auto flex lg:flex-col items-center gap-4 lg:gap-2"
+        >
+          <!-- Text Top -->
+          <div
+            class="lg:w-72 lg:text-center order-2 lg:order-1 pt-1 lg:pt-0 pl-4 lg:pl-0 text-left lg:mb-4"
+          >
+            <h3 class="text-xl font-bold text-[#D8A5FF] drop-shadow-md">
+              Color Correction & Grading
+            </h3>
+            <p class="text-sm text-gray-400 mt-1">
+              Color Grading in DaVinci Resolve
+            </p>
+          </div>
+
+          <div
+            class="relative z-10 w-12 h-12 rounded-full bg-black border-4 border-[#6F2DBD] flex items-center justify-center text-white font-bold text-xl wf-node-shadow flex-shrink-0 order-1 lg:order-2"
+          >
+            6
+            <div
+              class="hidden lg:block absolute -top-3 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-b-[10px] border-b-[#6F2DBD] border-r-[6px] border-r-transparent"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Short Ads Videos Section (Portrait Carousel) -->
+    <section
+      id="ads-shorts-carousel"
+      class="w-full py-14 md:py-24 text-center overflow-hidden select-none relative reveal bg-white/[0.03] border-y border-white/10 mt-28"
+      onwheel="handleScroll(event, 'adsShorts')"
+    >
+      <div class="max-w-7xl mx-auto px-6">
+      <h2
+        class="text-4xl md:text-[131px] font-fuzzy font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#3234BD] to-[#6E2DBD] md:mb-12 tracking-normal leading-none text-center"
+      >
+        Short Ads Videos
+      </h2>
+
+      <button
+        onclick="moveCarousel('adsShorts', -1)"
+        class="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/20 w-12 h-12 rounded-full flex items-center justify-center text-white transition backdrop-blur-md"
+      >
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button
+        onclick="moveCarousel('adsShorts', 1)"
+        class="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/20 w-12 h-12 rounded-full flex items-center justify-center text-white transition backdrop-blur-md"
+      >
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+
+      <!-- Carousel Container -->
+      <div
+        class="flex items-center justify-center h-[700px] relative w-full perspective-1000 md:mb-12"
+      >
+        <div
+        id="ads-shorts-carousel-items"
+        class="flex items-center justify-center w-full h-full relative"
+        >
+        <!-- Content handled by JS -->
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- Long Ads Videos Section (Landscape Carousel) -->
+    <section
+      id="ads-long-carousel"
+      class="w-full py-14 md:py-24 text-center overflow-hidden select-none relative reveal"
+      onwheel="handleScroll(event, 'adsLong')"
+    >
+      <div class="max-w-7xl mx-auto px-6">
+      <h2
+        class="text-4xl md:text-[131px] font-fuzzy font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#3234BD] to-[#6E2DBD] md:mb-12 tracking-normal leading-none text-center"
+      >
+        Long Ads Videos
+      </h2>
+
+      <button
+        onclick="moveCarousel('adsLong', -1)"
+        class="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/20 w-12 h-12 rounded-full flex items-center justify-center text-white transition backdrop-blur-md"
+      >
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button
+        onclick="moveCarousel('adsLong', 1)"
+        class="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/20 w-12 h-12 rounded-full flex items-center justify-center text-white transition backdrop-blur-md"
+      >
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+
+      <div
+        class="flex items-center justify-center h-[300px] md:h-[600px] relative w-full perspective-1000 md:mb-12"
+      >
+        <div
+        id="ads-long-carousel-items"
+        class="flex items-center justify-center w-full h-full relative"
+        >
+        <!-- Content handled by JS -->
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- Short Video Carousel (Existing Section) -->
+    <section
+      id="shorts-carousel"
+      class="w-full py-14 md:py-24 text-center overflow-hidden select-none relative reveal bg-white/[0.03] border-y border-white/10"
+      onwheel="handleScroll(event, 'shorts')"
+    >
+      <div class="max-w-7xl mx-auto px-6">
+      <h2
+        class="text-4xl md:text-[131px] font-fuzzy font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#3234BD] to-[#6E2DBD] md:mb-12 tracking-normal leading-none text-center"
+      >
+        Short Video
+      </h2>
+
+      <button
+        onclick="moveCarousel('shorts', -1)"
+        class="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/20 w-12 h-12 rounded-full flex items-center justify-center text-white transition backdrop-blur-md"
+      >
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button
+        onclick="moveCarousel('shorts', 1)"
+        class="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/20 w-12 h-12 rounded-full flex items-center justify-center text-white transition backdrop-blur-md"
+      >
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+
+      <div
+        class="flex items-center justify-center h-[700px] relative w-full perspective-1000 md:mb-12"
+      >
+        <div
+        id="shorts-carousel-items"
+        class="flex items-center justify-center w-full h-full relative"
+        >
+        <!-- Content handled by JS -->
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- NEW SECTION: Long Form Video (Landscape Carousel) -->
+    <section
+      id="longform-carousel"
+      class="w-full py-14 md:py-24 text-center overflow-hidden select-none relative reveal"
+      onwheel="handleScroll(event, 'longform')"
+    >
+      <div class="max-w-7xl mx-auto px-6">
+        <h2
+          class="text-4xl md:text-[131px] font-fuzzy font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#3234BD] to-[#6E2DBD] md:mb-12 tracking-normal leading-none text-center"
+        >
+          Long Form
+        </h2>
+
+        <button
+          onclick="moveCarousel('longform', -1)"
+          class="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/20 w-12 h-12 rounded-full flex items-center justify-center text-white transition backdrop-blur-md"
+        >
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button
+          onclick="moveCarousel('longform', 1)"
+          class="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/20 w-12 h-12 rounded-full flex items-center justify-center text-white transition backdrop-blur-md"
+        >
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <div
+          class="flex items-center justify-center h-[300px] md:h-[600px] relative w-full perspective-1000 md:mb-12"
+        >
+          <div
+            id="longform-carousel-items"
+            class="flex items-center justify-center w-full h-full relative"
+          >
+            <!-- Content handled by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW SECTION: SaaS Explainer (Landscape Carousel) -->
+    <section
+      id="saas-carousel"
+      class="w-full py-14 md:py-24 text-center overflow-hidden select-none relative reveal bg-white/[0.03] border-y border-white/10"
+      onwheel="handleScroll(event, 'saas')"
+    >
+      <div class="max-w-7xl mx-auto px-6">
+        <h2
+          class="text-4xl md:text-[131px] font-fuzzy font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#3234BD] to-[#6E2DBD] md:mb-12 tracking-normal leading-none text-center"
+        >
+          SaaS Explainer
+        </h2>
+
+        <button
+          onclick="moveCarousel('saas', -1)"
+          class="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/20 w-12 h-12 rounded-full flex items-center justify-center text-white transition backdrop-blur-md"
+        >
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button
+          onclick="moveCarousel('saas', 1)"
+          class="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/20 w-12 h-12 rounded-full flex items-center justify-center text-white transition backdrop-blur-md"
+        >
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <div
+          class="flex items-center justify-center h-[300px] md:h-[600px] relative w-full perspective-1000 md:mb-12"
+        >
+          <div
+            id="saas-carousel-items"
+            class="flex items-center justify-center w-full h-full relative"
+          >
+            <!-- Content handled by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      class="bg-[#05030a] border-t border-white/10 pt-16 pb-8 relative overflow-hidden mt-12"
+    >
+      <!-- Decorative Elements -->
+      <div
+        class="absolute top-0 left-1/4 w-64 h-1 bg-[#6F2DBD] opacity-20 blur-[2px]"
+      ></div>
+      <div
+        class="absolute bottom-0 right-1/4 w-64 h-1 bg-[#3234BD] opacity-20 blur-[2px]"
+      ></div>
+
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-12">
+          <!-- Brand Column -->
+          <div class="md:col-span-5 flex flex-col gap-6">
+            <a
+              href="#"
+              class="text-3xl font-bold font-display text-white tracking-wide"
+              >Talha Khan</a
+            >
+            <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+              Helping brands and creators tell better stories through
+              high-impact video editing and strategic ad creatives. Let's create
+              something extraordinary.
+            </p>
+            <!-- Social Links -->
+            <div class="flex gap-4 mt-2">
+              <a
+                href="#"
+                class="w-7 h-7 md:w-10 md:h-10 rounded-full bg-white/5 hover:bg-[#6F2DBD] flex items-center justify-center text-white transition-all duration-300 hover:scale-110 group"
+              >
+                <i
+                  class="fa-brands fa-linkedin-in group-hover:rotate-12 transition-transform"
+                ></i>
+              </a>
+              <a
+                href="#"
+                class="w-7 h-7 md:w-10 md:h-10 rounded-full bg-white/5 hover:bg-[#E1306C] flex items-center justify-center text-white transition-all duration-300 hover:scale-110 group"
+              >
+                <i
+                  class="fa-brands fa-instagram group-hover:rotate-12 transition-transform"
+                ></i>
+              </a>
+              <a
+                href="#"
+                class="w-7 h-7 md:w-10 md:h-10 rounded-full bg-white/5 hover:bg-[#FF0000] flex items-center justify-center text-white transition-all duration-300 hover:scale-110 group"
+              >
+                <i
+                  class="fa-brands fa-youtube group-hover:rotate-12 transition-transform"
+                ></i>
+              </a>
+              <a
+                href="mailto:Saimkhan00n@gmail.com"
+                class="w-7 h-7 md:w-10 md:h-10 rounded-full bg-white/5 hover:bg-green-500 flex items-center justify-center text-white transition-all duration-300 hover:scale-110 group"
+              >
+                <i
+                  class="fa-regular fa-envelope group-hover:rotate-12 transition-transform"
+                ></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Navigation Column -->
+          <div class="md:col-span-3">
+            <h4 class="text-white font-bold mb-6 text-lg">Quick Links</h4>
+            <ul class="space-y-3 text-sm text-gray-400">
+              <li>
+                <a
+                  href="#hero"
+                  class="hover:text-[#6F2DBD] transition-colors flex items-center gap-2"
+                  ><i
+                    class="fa-solid fa-chevron-right text-[10px] text-gray-600"
+                  ></i>
+                  Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#profile"
+                  class="hover:text-[#6F2DBD] transition-colors flex items-center gap-2"
+                  ><i
+                    class="fa-solid fa-chevron-right text-[10px] text-gray-600"
+                  ></i>
+                  About Me</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#workflow"
+                  class="hover:text-[#6F2DBD] transition-colors flex items-center gap-2"
+                  ><i
+                    class="fa-solid fa-chevron-right text-[10px] text-gray-600"
+                  ></i>
+                  Workflow</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#ads-shorts-carousel"
+                  class="hover:text-primary transition-colors flex items-center gap-2"
+                  ><i
+                    class="fa-solid fa-chevron-right text-[10px] text-gray-600"
+                  ></i>
+                  Portfolio</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact Column -->
+          <div class="md:col-span-4">
+            <h4 class="text-white font-bold mb-6 text-lg">Get in Touch</h4>
+            <div class="flex flex-col gap-4 text-sm text-gray-400">
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-location-dot mt-1 text-[#6F2DBD]"></i>
+                <span>Based in Thailand<br />Available for Remote Work</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-envelope text-[#6F2DBD]"></i>
+                <a
+                  href="mailto:Saimkhan00n@gmail.com"
+                  class="hover:text-white transition"
+                  >Saimkhan00n@gmail.com</a
+                >
+              </div>
+              <div class="flex items-center gap-3">
+                <i class="fa-brands fa-whatsapp text-[#6F2DBD]"></i>
+                <span>+66 616850347</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div
+          class="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8"
+        ></div>
+
+        <!-- Bottom Bar -->
+        <div
+          class="flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 gap-4"
+        >
+          <p>&copy; 2026 Talha Khan. All rights reserved.</p>
+          <div class="flex gap-6">
+            <a href="#" class="hover:text-gray-300 transition"
+              >Privacy Policy</a
+            >
+            <a href="#" class="hover:text-gray-300 transition"
+              >Terms of Service</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Interactive Logic -->
+    <script>
+      // Data for multiple carousels with YouTube IDs
+      const carousels = {
+        adsShorts: {
+          ids: [
+            "FKF2znIYUVU",
+            "JogmCBM2bN4",
+            "4VjYWxU91PM",
+            "aPpixEXm38Q",
+            "Ax2fOkAOj30",
+            "307OqBPEZDE",
+            "9V7js4xtvqI",
+            "llTIikv104o",
+            "JRHBdDDnPH8",
+          ],
+          index: 0,
+          containerId: "ads-shorts-carousel-items",
+        },
+        adsLong: {
+          ids: [
+            "sGO2Hb8P2lY",
+            "fMLKdl1QSGI",
+            "IFax5IzYeaU",
+            "P2sOmY1bUHM",
+            "XQQ7Imin1Dc",
+            "TkkRKTUTDk8",
+            "tXXQGk9wrUk",
+            "KF--0ruEuOU",
+            "vL456biSnkI",
+            "2UOUyg4X75I",
+          ],
+          index: 0,
+          containerId: "ads-long-carousel-items",
+        },
+        shorts: {
+          ids: [
+            "T3fxrJvnGDs",
+            "xhthjoBC1Oc",
+            "RXA5Mn3YCaQ",
+            "FkfvzIDTNVQ",
+            "oz79nB66_oo",
+            "N0pOLnI7rXg",
+            "e6I_GTzwqoM",
+            "uf82AGGaRvk",
+            "B0UbfsLk2OY",
+            "yWjfyM3EhSo",
+          ],
+          index: 0,
+          containerId: "shorts-carousel-items",
+        },
+        longform: {
+          ids: [
+            "5iLjR0A4IGc",
+            "np-4ctZNRvQ",
+            "yQxnqaH4NHI",
+            "ZnaeXOgQL0U",
+            "rdPoTuWow-A",
+            "rdPoTuWow-A",
+            "B3islAQ4z6g",
+          ],
+          index: 0,
+          containerId: "longform-carousel-items",
+        },
+        saas: {
+          ids: [
+            "KKs8_tKoHZw",
+            "IoKDFEqVhpQ",
+            "-79Q0FFaZpY",
+            "3SJwv6VKfO4",
+            "S4KUVGqneyY",
+          ],
+          index: 0,
+          containerId: "saas-carousel-items",
+        },
+      };
+
+      function getIndex(i, total) {
+        return (i + total) % total;
+      }
+
+      function renderCarousel(carouselKey) {
+        const data = carousels[carouselKey];
+        const container = document.getElementById(data.containerId);
+        container.innerHTML = "";
+
+        const total = data.ids.length;
+        const leftIndex = getIndex(data.index - 1, total);
+        const centerIndex = getIndex(data.index, total);
+        const rightIndex = getIndex(data.index + 1, total);
+
+        // Left Card (Dull, Clickable)
+        const leftCard = createCard(
+          data.ids[leftIndex],
+          "left",
+          -1,
+          carouselKey,
+        );
+        container.appendChild(leftCard);
+
+        // Center Card (Active)
+        const centerCard = createCard(
+          data.ids[centerIndex],
+          "center",
+          0,
+          carouselKey,
+        );
+        container.appendChild(centerCard);
+
+        // Right Card (Dull, Clickable)
+        const rightCard = createCard(
+          data.ids[rightIndex],
+          "right",
+          1,
+          carouselKey,
+        );
+        container.appendChild(rightCard);
+      }
+
+      function createCard(videoId, position, direction, carouselKey) {
+        const div = document.createElement("div");
+        // Base classes for transition and positioning
+        div.className =
+          "absolute transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] rounded-2xl overflow-hidden shadow-2xl bg-black";
+
+        // Check if it's a landscape section
+        const isLandscape =
+          carouselKey === "longform" ||
+          carouselKey === "saas" ||
+          carouselKey === "adsLong";
+
+        // Base dimensions
+        if (isLandscape) {
+          div.className += " w-[80vw] md:w-[800px] aspect-video";
+        } else {
+          div.className += " w-[300px] md:w-[380px] h-[580px] md:h-[650px]";
+        }
+
+        if (position === "center") {
+          // Active Center Card
+          div.className +=
+            " z-30 scale-100 opacity-100 shadow-[0_0_60px_rgba(111,45,189,0.6)] border-2 border-[#6F2DBD]";
+          div.style.transform = "translateX(0) scale(1)";
+
+          // Active Video Iframe
+          div.innerHTML = `
+                    <iframe 
+                        width="100%" 
+                        height="100%" 
+                        src="https://www.youtube.com/embed/${videoId}?controls=1&rel=0&modestbranding=1" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        class="w-full h-full object-cover"
+                    ></iframe>
+                `;
+        } else {
+          // Side Cards
+          div.className +=
+            " z-10 opacity-60 blur-[2px] cursor-pointer hover:opacity-80 hover:blur-0 transition-all border border-white/10 grayscale-[30%]";
+
+          if (position === "left") {
+            // Bring it closer than 100% to account for scale
+            div.style.transform = "translateX(-90%) scale(0.75)";
+          } else {
+            div.style.transform = "translateX(90%) scale(0.75)";
+          }
+
+          // Click to move to center
+          div.onclick = () => moveCarousel(carouselKey, direction);
+
+          // Overlay to prevent interaction with side iframes
+          div.innerHTML = `
+                    <div class="absolute inset-0 z-20 bg-black/40 hover:bg-transparent transition-colors duration-300"></div>
+                    <iframe 
+                        width="100%" 
+                        height="100%" 
+                        src="https://www.youtube.com/embed/${videoId}?controls=0&rel=0&modestbranding=1" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        class="w-full h-full object-cover pointer-events-none"
+                    ></iframe>
+                `;
+        }
+
+        return div;
+      }
+
+      // Global function for onclick
+      window.moveCarousel = function (carouselKey, direction) {
+        const data = carousels[carouselKey];
+        data.index = getIndex(data.index + direction, data.ids.length);
+        renderCarousel(carouselKey);
+      };
+
+      // Global function for onwheel
+      window.handleScroll = function (event, carouselKey) {
+        if (event.deltaY > 0) {
+          moveCarousel(carouselKey, 1);
+        } else {
+          moveCarousel(carouselKey, -1);
+        }
+      };
+
+      // --- SCROLL OBSERVER ---
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+
+      document.addEventListener("DOMContentLoaded", () => {
+        console.log("Portfolio Updated: Animations & Background Active");
+
+        // Render all carousels
+        renderCarousel("adsShorts");
+        renderCarousel("adsLong");
+        renderCarousel("shorts");
+        renderCarousel("longform");
+        renderCarousel("saas");
+
+        document
+          .querySelectorAll(".reveal")
+          .forEach((el) => observer.observe(el));
+
+        // --- GALAXY STARS ANIMATION ---
+        const starCanvas = document.getElementById("galaxy-canvas");
+        if (starCanvas) {
+          const ctx = starCanvas.getContext("2d");
+          let w, h;
+          let stars = [];
+
+          const resize = () => {
+            w = starCanvas.width = starCanvas.parentElement.offsetWidth;
+            h = starCanvas.height = starCanvas.parentElement.offsetHeight;
+            initStars();
+          };
+
+          const initStars = () => {
+            stars = [];
+            // Adjust density based on screen size
+            const count = Math.floor((w * h) / 4000);
+            for (let i = 0; i < count; i++) {
+              stars.push({
+                x: Math.random() * w,
+                y: Math.random() * h,
+                size: Math.random() * 1.5,
+                // vary speed for depth effect
+                speed: Math.random() * 0.3 + 0.05,
+                opacity: Math.random() * 0.8 + 0.2,
+              });
+            }
+          };
+
+          const animateStars = () => {
+            ctx.clearRect(0, 0, w, h);
+
+            stars.forEach((star) => {
+              ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+              ctx.beginPath();
+              ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+              ctx.fill();
+
+              // Move Upwards
+              star.y -= star.speed;
+
+              // Reset if it goes off top screen
+              if (star.y < 0) {
+                star.y = h;
+                star.x = Math.random() * w;
+              }
+
+              // Twinkle Effect
+              star.opacity += (Math.random() - 0.5) * 0.02;
+              if (star.opacity < 0.2) star.opacity = 0.2;
+              if (star.opacity > 0.9) star.opacity = 0.9;
+            });
+
+            requestAnimationFrame(animateStars);
+          };
+
+          // Initialize
+          window.addEventListener("resize", resize);
+          resize();
+          animateStars();
+        }
+      });
+    </script>
+  </body>
+</html>
